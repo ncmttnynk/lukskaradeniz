@@ -57,7 +57,7 @@ export default class EkmekForm extends Component {
                     setFieldTouched
                 }) => (
                         <Content style={style.container}>
-                            <Item floatingLabel style={style.exItem}>
+                            <Item fixedLabel style={style.exItem}>
                                 <Label>Normal Ekmek (1,25 ₺):</Label>
                                 <Input
                                     onChangeText={handleChange('normalEkmek')}
@@ -69,7 +69,7 @@ export default class EkmekForm extends Component {
                                     returnKeyType={'next'}
                                 />
                             </Item>
-                            <Item floatingLabel style={style.exItem}>
+                            <Item fixedLabel style={style.exItem}>
                                 <Label>Kepekli Ekmek (2,00 ₺):</Label>
                                 <Input
                                     onChangeText={handleChange('kepekliEkmek')}
@@ -84,7 +84,7 @@ export default class EkmekForm extends Component {
                                     placeholderTextColor={'#AE300A'}
                                 />
                             </Item>
-                            <Item floatingLabel style={style.exItem}>
+                            <Item fixedLabel style={style.exItem}>
                                 <Label>Tam Buğday (2,5 ₺):</Label>
                                 <Input
                                     onChangeText={handleChange('tamBugday')}
@@ -98,7 +98,7 @@ export default class EkmekForm extends Component {
                                     returnKeyType={'next'}
                                 />
                             </Item>
-                            <Item floatingLabel style={style.exItem}>
+                            <Item fixedLabel style={style.exItem}>
                                 <Label>Sarı Buğday (2,5 ₺):</Label>
                                 <Input
                                     ref={ref => this.sariBugday = ref}
