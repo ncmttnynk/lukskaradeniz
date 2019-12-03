@@ -1,4 +1,4 @@
-package com.lukskaradenizcafefirin;
+package com.lukskaradeniz;
 
 import android.app.Application;
 import android.content.Context;

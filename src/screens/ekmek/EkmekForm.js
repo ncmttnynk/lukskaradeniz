@@ -16,7 +16,7 @@ export default class EkmekForm extends Component {
         try {
             const { normalEkmek, kepekliEkmek, tamBugday, sariBugday } = values;
             const toplam = (normalEkmek * 1.25) + (kepekliEkmek * 2) + (tamBugday * 2.5) + (sariBugday * 2.5);
-            const iskonto = toplam * 30 / 100;
+            const iskonto = toplam * 25 / 100;
             const fark = toplam - iskonto;
             this.setState({
                 toplam,
@@ -142,7 +142,7 @@ export default class EkmekForm extends Component {
                                 <ListItem>
                                     <Left>
                                         <Text style={style.iskonto}>
-                                            %30:
+                                            %25:
                                             </Text>
                                     </Left>
                                     <Right>
@@ -154,7 +154,7 @@ export default class EkmekForm extends Component {
                                 <ListItem>
                                     <Left>
                                         <Text style={style.fark}>
-                                            Toplam - %30:
+                                            Toplam - %25:
                                             </Text>
                                     </Left>
                                     <Right>
