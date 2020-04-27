@@ -17,7 +17,7 @@ import {Formik} from 'formik';
 
 import validations from './validations';
 
-export default class EkmekForm extends Component {
+export default class PideForm extends Component {
   state = {
     toplam: 0,
     iskonto: 0,
@@ -26,13 +26,8 @@ export default class EkmekForm extends Component {
 
   _handleSubmit = async values => {
     try {
-      const {pide, normalEkmek, kepekliEkmek, tamBugday, sariBugday} = values;
-      const toplam =
-        pide * 3 +
-        normalEkmek * 1.25 +
-        kepekliEkmek * 2 +
-        tamBugday * 2.5 +
-        sariBugday * 2.5;
+      const {pide} = values;
+      const toplam = pide * 3;
       const iskonto = (toplam * 25) / 100;
       const fark = toplam - iskonto;
       this.setState({
@@ -58,10 +53,6 @@ export default class EkmekForm extends Component {
       <Formik
         initialValues={{
           pide: '',
-          normalEkmek: '',
-          kepekliEkmek: '',
-          tamBugday: '',
-          sariBugday: '',
         }}
         onSubmit={this._handleSubmit}
         onReset={this._handleReset}
@@ -77,65 +68,11 @@ export default class EkmekForm extends Component {
             <Item fixedLabel style={style.exItem}>
               <Label>Pide (3 ₺):</Label>
               <Input
+                ref={ref => (this.pide = ref)}
+                returnKeyType={'go'}
                 onChangeText={handleChange('pide')}
-                onSubmitEditing={() => this.normalEkmek._root.focus()}
                 value={values.pide}
                 onBlur={() => setFieldTouched('pide')}
-                autoCapitalize={'none'}
-                keyboardType={'numeric'}
-                returnKeyType={'next'}
-              />
-            </Item>
-            <Item fixedLabel style={style.exItem}>
-              <Label>Normal Ekmek (1,25 ₺):</Label>
-              <Input
-                onChangeText={handleChange('normalEkmek')}
-                ref={ref => (this.normalEkmek = ref)}
-                onSubmitEditing={() => this.kepekliEkmek._root.focus()}
-                value={values.normalEkmek}
-                onBlur={() => setFieldTouched('normalEkmek')}
-                autoCapitalize={'none'}
-                keyboardType={'numeric'}
-                returnKeyType={'next'}
-              />
-            </Item>
-            <Item fixedLabel style={style.exItem}>
-              <Label>Kepekli Ekmek (2,00 ₺):</Label>
-              <Input
-                onChangeText={handleChange('kepekliEkmek')}
-                ref={ref => (this.kepekliEkmek = ref)}
-                onSubmitEditing={() => this.tamBugday._root.focus()}
-                returnKeyType={'next'}
-                value={values.kepekliEkmek}
-                onBlur={() => setFieldTouched('kepekliEkmek')}
-                autoCapitalize={'none'}
-                keyboardType={'numeric'}
-                returnKeyType={'next'}
-                placeholderTextColor={'#AE300A'}
-              />
-            </Item>
-            <Item fixedLabel style={style.exItem}>
-              <Label>Tam Buğday (2,5 ₺):</Label>
-              <Input
-                onChangeText={handleChange('tamBugday')}
-                ref={ref => (this.tamBugday = ref)}
-                onSubmitEditing={() => this.sariBugday._root.focus()}
-                returnKeyType={'next'}
-                value={values.tamBugday}
-                onBlur={() => setFieldTouched('tamBugday')}
-                autoCapitalize={'none'}
-                keyboardType={'numeric'}
-                returnKeyType={'next'}
-              />
-            </Item>
-            <Item fixedLabel style={style.exItem}>
-              <Label>Sarı Buğday (2,5 ₺):</Label>
-              <Input
-                ref={ref => (this.sariBugday = ref)}
-                returnKeyType={'go'}
-                onChangeText={handleChange('sariBugday')}
-                value={values.sariBugday}
-                onBlur={() => setFieldTouched('sariBugday')}
                 onSubmitEditing={handleSubmit}
                 keyboardType={'numeric'}
               />

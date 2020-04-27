@@ -11,9 +11,9 @@ import {
   Text,
 } from 'native-base';
 
-import EkmekForm from './EkmekForm';
+import PideForm from './PideForm';
 
-export default class Ekmek extends Component {
+export default class Pide extends Component {
   render() {
     return (
       <Container style={{backgroundColor: '#F2F2F2'}}>
@@ -25,7 +25,7 @@ export default class Ekmek extends Component {
           </Body>
           <Right style={{flex: 0.3}} />
         </Header>
-        <EkmekForm />
+        <PideForm />
       </Container>
     );
   }
