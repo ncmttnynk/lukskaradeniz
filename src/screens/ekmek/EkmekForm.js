@@ -26,13 +26,9 @@ export default class EkmekForm extends Component {
 
   _handleSubmit = async values => {
     try {
-      const {pide, normalEkmek, kepekliEkmek, tamBugday, sariBugday} = values;
+      const {normalEkmek, kepekliEkmek, tamBugday, sariBugday} = values;
       const toplam =
-        pide * 3 +
-        normalEkmek * 1.25 +
-        kepekliEkmek * 2 +
-        tamBugday * 2.5 +
-        sariBugday * 2.5;
+        normalEkmek * 1.5 + kepekliEkmek * 2.5 + tamBugday * 3 + sariBugday * 3;
       const iskonto = (toplam * 25) / 100;
       const fark = toplam - iskonto;
       this.setState({
@@ -57,7 +53,6 @@ export default class EkmekForm extends Component {
     return (
       <Formik
         initialValues={{
-          pide: '',
           normalEkmek: '',
           kepekliEkmek: '',
           tamBugday: '',
@@ -75,19 +70,7 @@ export default class EkmekForm extends Component {
         }) => (
           <Content style={style.container}>
             <Item fixedLabel style={style.exItem}>
-              <Label>Pide (3 ₺):</Label>
-              <Input
-                onChangeText={handleChange('pide')}
-                onSubmitEditing={() => this.normalEkmek._root.focus()}
-                value={values.pide}
-                onBlur={() => setFieldTouched('pide')}
-                autoCapitalize={'none'}
-                keyboardType={'numeric'}
-                returnKeyType={'next'}
-              />
-            </Item>
-            <Item fixedLabel style={style.exItem}>
-              <Label>Normal Ekmek (1,25 ₺):</Label>
+              <Label>Normal Ekmek (1,50 ₺):</Label>
               <Input
                 onChangeText={handleChange('normalEkmek')}
                 ref={ref => (this.normalEkmek = ref)}
@@ -100,7 +83,7 @@ export default class EkmekForm extends Component {
               />
             </Item>
             <Item fixedLabel style={style.exItem}>
-              <Label>Kepekli Ekmek (2,00 ₺):</Label>
+              <Label>Kepekli Ekmek (2,50 ₺):</Label>
               <Input
                 onChangeText={handleChange('kepekliEkmek')}
                 ref={ref => (this.kepekliEkmek = ref)}
@@ -115,7 +98,7 @@ export default class EkmekForm extends Component {
               />
             </Item>
             <Item fixedLabel style={style.exItem}>
-              <Label>Tam Buğday (2,5 ₺):</Label>
+              <Label>Tam Buğday (3,0 ₺):</Label>
               <Input
                 onChangeText={handleChange('tamBugday')}
                 ref={ref => (this.tamBugday = ref)}
@@ -129,7 +112,7 @@ export default class EkmekForm extends Component {
               />
             </Item>
             <Item fixedLabel style={style.exItem}>
-              <Label>Sarı Buğday (2,5 ₺):</Label>
+              <Label>Sarı Buğday (3,0 ₺):</Label>
               <Input
                 ref={ref => (this.sariBugday = ref)}
                 returnKeyType={'go'}
